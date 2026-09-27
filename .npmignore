@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Source files (only dist is published)
+src/
+tsconfig.json
+tsconfig.build.json
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+vitest.config.ts
+eslint.config.js
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+
+# Build artifacts (except dist)
+*.tsbuildinfo
