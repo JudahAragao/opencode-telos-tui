@@ -1,6 +1,6 @@
 {
-  "name": "@telos/opencode-tui",
-  "version": "1.1.16",
+  "name": "@telos/tui",
+  "version": "1.0.0",
   "description": "TUI plugin for Telos SDD - provides native TUI commands for /sdd viz, /sdd status, /sdd tasks, and other SDD operations without invoking the LLM",
   "type": "module",
   "exports": {
@@ -60,13 +60,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/telos/opencode-telos.git",
-    "directory": "packages/opencode-tui"
+    "url": "https://github.com/JudahAragao/opencode-telos-tui.git"
   },
   "bugs": {
-    "url": "https://github.com/telos/opencode-telos/issues"
+    "url": "https://github.com/JudahAragao/opencode-telos-tui/issues"
   },
-  "homepage": "https://github.com/telos/opencode-telos/tree/main/packages/opencode-tui#readme",
+  "homepage": "https://github.com/JudahAragao/opencode-telos-tui#readme",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
