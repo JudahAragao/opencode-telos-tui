@@ -1,5 +1,5 @@
 {
-  "name": "@telos/tui",
+  "name": "@oktis-works/telos-sdd-tui",
   "version": "1.0.0",
   "description": "TUI plugin for Telos SDD - provides native TUI commands for /sdd viz, /sdd status, /sdd tasks, and other SDD operations without invoking the LLM",
   "type": "module",
