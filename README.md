@@ -1,4 +1,4 @@
-# @telos/opencode-tui
+# @oktis-works/telos-sdd-tui
 
 **TUI Plugin for Telos SDD** - Provides native TUI commands for `/sdd viz`, `/sdd status`, `/sdd tasks`, and other SDD operations without invoking the LLM.
 
@@ -12,32 +12,51 @@
 
 ## Installation
 
+### Option 1: Via OpenCode CLI (recommended)
+
 ```bash
-npm install @telos/opencode-tui
+opencode plugin add @oktis-works/telos-sdd-tui
+```
+
+This installs the plugin automatically in your OpenCode.
+
+### Option 2: Via npm
+
+```bash
+npm install -g @oktis-works/telos-sdd-tui
+```
+
+Then add it to your `opencode.json`:
+
+```json
+{
+  "plugins": ["@oktis-works/telos-sdd-tui"]
+}
 ```
 
 ## Quick Start
 
-### 1. Add to your `cli.json`
+### 1. Add to your `opencode.json`
 
 ```json
 {
-  "$schema": "https://opencode.ai/cli.json",
+  "$schema": "https://opencode.ai/config.json",
   "plugins": [
-    "@telos/opencode-tui"
+    "@oktis-works/telos-sdd-tui"
   ]
 }
 ```
 
 ### 2. Ensure server plugin is installed
 
-The TUI plugin communicates with the **Telos SDD server plugin** (`@telos/opencode-plugin`). Make sure it's in your `opencode.json`:
+The TUI plugin communicates with the **Telos SDD server plugin** (`@oktis-works/telos-sdd-graph`). Make sure it's in your `opencode.json`:
 
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
   "plugins": [
-    "@telos/opencode-plugin"
+    "@oktis-works/telos-sdd-tui",
+    "@oktis-works/telos-sdd-graph"
   ]
 }
 ```
@@ -71,16 +90,16 @@ opencode
 ## How It Works
 
 ```
-┌─────────────────────┐     HTTP/WS      ┌──────────────────────┐
-│   TUI Process       │ ◄──────────────► │   Server Process     │
-│                     │                  │                      │
-│  @telos/opencode-tui │                  │  @telos/opencode-    │
-│  (this plugin)      │  ctx.client      │  plugin              │
-│                     │  .session.command│                      │
-│  - keymap commands  │                  │  - command.transform │
-│  - ui.dialog.show() │                  │  - runSddCommand()   │
-│  - ui.toast.show()  │                  │  - startSharedDash   │
-└─────────────────────┘                  └──────────────────────┘
+┌─────────────────────────┐     HTTP/WS      ┌──────────────────────────────┐
+│   TUI Process           │ ◄──────────────► │   Server Process             │
+│                         │                  │                              │
+│  @oktis-works/telos-sdd-tui │              │  @oktis-works/telos-sdd-graph│
+│  (this plugin)          │  ctx.client      │                              │
+│                         │  .session.command│  - command.transform         │
+│  - keymap commands      │                  │  - runSddCommand()           │
+│  - ui.dialog.show()     │                  │  - startSharedDashboard()    │
+│  - ui.toast.show()      │                  │                              │
+└─────────────────────────┘                  └──────────────────────────────┘
 ```
 
 The TUI plugin registers commands via `ctx.keymap.registerLayer()`. When invoked, they call the server plugin's `/sdd` command through `ctx.client.session.command()` and display results using native TUI dialogs (`ctx.ui.dialog.show()`) and toasts (`ctx.ui.toast.show()`).
@@ -138,7 +157,7 @@ npm publish --access public
 
 - Node.js >= 20
 - OpenCode >= 0.20 (V2 plugin API)
-- `@telos/opencode-plugin` server plugin installed
+- `@oktis-works/telos-sdd-graph` server plugin installed
 
 ## License
 
